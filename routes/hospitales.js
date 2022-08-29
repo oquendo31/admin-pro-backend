@@ -43,7 +43,9 @@ router.post( '/',
 
   router.put( '/:id',
         [     
-                
+          validarJWT,
+          check('nombre','El nombre del hospital es necesario').not().isEmpty(),
+          validarCampos     
                 
         ],
         actualizarHospital );  //debemos de defminir  el controlador en controllers
@@ -54,7 +56,10 @@ router.post( '/',
 
   //***************************   Borrar usuario  ********************************/
 
-  router.delete( '/:id',  borrarHospital );
+  router.delete( '/:id',
+       validarJWT,
+       borrarHospital
+     );
 
 
 
